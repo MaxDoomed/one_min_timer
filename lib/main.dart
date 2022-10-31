@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
 
   int totalTime = 60;
   final Duration minDuration = const Duration(seconds: 1);
-  final Duration maxDuration = const Duration(minutes: 15);
+  final Duration maxDuration = const Duration(minutes: 10);
 
   TimerState timerState = TimerState.start;
   @override
@@ -161,14 +161,15 @@ class _MyAppState extends State<MyApp> {
                     (BuildContext context2, WearShape shape, Widget? child) {
                   return Stack(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Align(
-                          alignment: Alignment.topCenter,
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 20.0, left: 20, right: 20, bottom: 20),
                             child: const Icon(
                               Icons.arrow_back_ios_outlined,
                               size: 20,
@@ -178,7 +179,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 20, 10, 20),
+                        padding: const EdgeInsets.fromLTRB(30, 0, 10, 20),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -192,10 +193,11 @@ class _MyAppState extends State<MyApp> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                const Text(
-                                  "Tap for start/pause",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 10),
+                                FittedBox(
+                                  child: const Text(
+                                    "Tap for start/pause",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ],
                             ),
@@ -212,10 +214,11 @@ class _MyAppState extends State<MyApp> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                const Text(
-                                  "double tap for restart",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 10),
+                                FittedBox(
+                                  child: const Text(
+                                    "Double tap for restart",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ],
                             )
@@ -246,15 +249,16 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Align(
-                          alignment: Alignment.topCenter,
-                          child: InkWell(
-                            onTap: () {
-                              setDuration(value);
-                              Navigator.pop(context);
-                            },
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: InkWell(
+                          onTap: () {
+                            setDuration(value);
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, left: 10, right: 10, bottom: 10),
                             child: const Icon(
                               Icons.arrow_back_ios_outlined,
                               size: 20,
@@ -263,15 +267,15 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Text(
-                          "Set Duration",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      Text(
+                        "Set Duration",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.60,
